@@ -129,7 +129,7 @@ class _loginState extends State<login> {
                                     child: CircularProgressIndicator(
                                       color: Colors.white,
                                     ),
-<<<<<<< HEAD
+
                                     margin: EdgeInsets.fromLTRB(
                                         0,
                                         responsive.dp(0.3),
@@ -145,7 +145,7 @@ class _loginState extends State<login> {
                                             : responsive.dp(2.5),
                                         fontFamily: "Poppins"),
                                   )
-=======
+
                                     Text(
                                       'Espera',
                                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: isTablet?responsive.fontSizeSubT:responsive.dp(2.5),fontFamily: "Poppins"),
@@ -241,7 +241,7 @@ class _loginState extends State<login> {
                                     });
                                   },
                                 ),
->>>>>>> 152a6f2ef8df7a170fd89e092f9e28903840956a
+
                                 ]),
                       onPressed: () async {
                         setState(() {
