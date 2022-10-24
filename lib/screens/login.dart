@@ -188,42 +188,7 @@ class _loginState extends State<login> {
                                     MaterialPageRoute(builder: (context) => registro()));
                               },
                             ),
-                            Row(
-
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: isTablet?responsive.dp(4):responsive.dp(5),
-                                  height:  isTablet?responsive.dp(4):responsive.dp(5),
-                                  margin: EdgeInsets.fromLTRB(responsive.dp(0.5),  0,responsive.dp(0.5) ,  0),
-                                  child: Icon(Icons.facebook_outlined, size: isTablet?responsive.dp(2.5):responsive.dp(3.5),
-                                      color: Colors.white),
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Theme.of(context).primaryColorDark),
-                                ),
-                                Container(
-                                  width: isTablet?responsive.dp(4):responsive.dp(5),
-                                  height: isTablet?responsive.dp(4):responsive.dp(5),
-                                  margin: EdgeInsets.fromLTRB(responsive.dp(0.5),  0,responsive.dp(0.5),0),
-                                  child: Icon(Icons.discord_outlined, size: isTablet?responsive.dp(2.5):responsive.dp(3.5),
-                                      color: Colors.white),
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Theme.of(context).primaryColorDark),
-                                ),
-                                Container(
-                                  width: isTablet?responsive.dp(4):responsive.dp(5),
-                                  height: isTablet?responsive.dp(4):responsive.dp(5),
-                                  margin: EdgeInsets.fromLTRB(responsive.dp(0.5),  0,responsive.dp(0.5),0),
-                                  child: Icon(Icons.whatsapp_rounded, size: isTablet?responsive.dp(2.5):responsive.dp(3.5),
-                                      color: Colors.white),
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Theme.of(context).primaryColorDark),
-                                )
-                              ],
-                            ),
+                            
                             Row(
 
                               mainAxisAlignment: MainAxisAlignment.center,
