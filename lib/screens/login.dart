@@ -129,6 +129,7 @@ class _loginState extends State<login> {
                                     child: CircularProgressIndicator(
                                       color: Colors.white,
                                     ),
+<<<<<<< HEAD
                                     margin: EdgeInsets.fromLTRB(
                                         0,
                                         responsive.dp(0.3),
@@ -144,6 +145,103 @@ class _loginState extends State<login> {
                                             : responsive.dp(2.5),
                                         fontFamily: "Poppins"),
                                   )
+=======
+                                    Text(
+                                      'Espera',
+                                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: isTablet?responsive.fontSizeSubT:responsive.dp(2.5),fontFamily: "Poppins"),
+                                    )
+                                  ]),
+                              onPressed: () async {
+                                setState(() {
+                                  isLoading = true;
+                                });
+                                if(validar()){
+                                  var responde = await login();
+                                  setState(() {
+                                    isLoading = false;
+                                  });
+                                  if(responde.containsKey('error')){
+                                    if(responde['error']=='Datos incorrectos'){
+                                      correo.error=true;
+                                      correo.msgError = "Usuario o contraseña incorrecta";
+                                      correo.formKey.currentState!.validate();
+                                      password.error=true;
+                                      password.formKey.currentState!.validate();
+                                    }
+                                    else{
+                                      openDialogError alertError =openDialogError("Error", responde['error']);
+                                      Future<bool?> openDialog()=> showDialog<bool>(
+                                          context: context,
+                                          builder: (context)=>alertError);
+                                      await openDialog();
+                                    }
+                                  }else{
+                                    if(responde['message']=='Login exitoso'){
+                                      print(session);
+                                        await preferences.setSesion(session);
+                                      await preferences.setLogin(responde['data'][0]['token'], responde['data'][0]['tipoUsuario'], responde['data'][0]['estado'],
+                                          responde['data'][0]['nombre'], responde['data'][0]['apellidos'], responde['data'][0]['fotoPerfil']);
+
+                                      if(responde['data'][0]['tipoUsuario']=="alumno"){
+                                        Navigator.of(context, rootNavigator:
+                                        true).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                                            homeAlumno()), (route) => false);
+                                      }else{
+                                        print("hola");
+                                      }
+
+
+                                    }
+                                  }
+                                  setState(() {
+                                    isLoading = false;
+                                  });
+                                }
+                                setState(() {
+                                  isLoading = false;
+                                });
+
+                                //showAlu();
+                              }),
+                        ),
+                        Column(
+                          children: <Widget>[
+                            Text(
+                              '¿No tienes una cuenta?',
+                              style: TextStyle(fontSize: responsive.dp(1.5), color: Theme.of(context).primaryColorLight),
+                            ),
+
+                            TextButton(
+                              child:  Text(
+                                'Crear una cuenta',
+                                style: TextStyle(
+                                    fontSize: isTablet?responsive.fontSizeSubT:responsive.dp(2.5), color: Theme.of(context).primaryColorDark,fontFamily: "Poppins"),
+                              ),
+                              onPressed: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) => registro()));
+                              },
+                            ),
+                            
+                            Row(
+
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+
+                                Text(
+                                  '¿Quires mantener tu sesión abierta?',
+                                  style: TextStyle(fontSize: responsive.dp(1.5), color: Theme.of(context).primaryColorLight),
+                                ),
+                                Checkbox(
+                                  value: session,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      session = value!;
+                                      print(session);
+                                    });
+                                  },
+                                ),
+>>>>>>> 152a6f2ef8df7a170fd89e092f9e28903840956a
                                 ]),
                       onPressed: () async {
                         setState(() {
